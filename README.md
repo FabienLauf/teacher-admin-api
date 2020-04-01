@@ -7,7 +7,7 @@ Repository of GovTech's NodeJS assessment for candidate Fabien Lauf.
 
 ## Enpoints
 
-### Register one or more students to a specified teacher
+### 1. Register one or more students to a specified teacher
 POST http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/register
 
 Request
@@ -24,7 +24,7 @@ Request
 Response
 HTTP 204 No Content
 
-### Retrieve a list of students common to a given list of teachers
+### 2. Retrieve a list of students common to a given list of teachers
 #### One teacher:
 GET http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/commonstudents?teacher=teacherken%40gmail.com
 
@@ -54,7 +54,7 @@ Response
 ```
 HTTP 200
 
-### Suspend a specified student
+### 3. Suspend a specified student
 POST http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/suspend
 
 Request
@@ -66,7 +66,7 @@ Request
 Response
 HTTP 204 No Content
 
-### Retrieve a list of students who can receive a given notification
+### 4. Retrieve a list of students who can receive a given notification
 POST http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/retrievefornotifications
 
 Request

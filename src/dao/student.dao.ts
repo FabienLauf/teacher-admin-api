@@ -1,5 +1,5 @@
 import querySql from "../helper/db";
-import {Student, Teacher, TeacherStudent} from "../model";
+import {Student, Teacher} from "../model";
 
 const sTableName = "students";
 const tTableName = "teachers";

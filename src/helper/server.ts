@@ -1,12 +1,16 @@
 import express from "express";
-import {registrationRouter} from "../router/registration.router";
-import {teacherRouter} from "../router/teacher.router";
-import {studentRouter} from "../router/student.router";
-import {commonStudentsRouter} from "../router/common-students.router";
-import {suspensionRouter} from "../router/suspension.router";
-import {notificationRouter} from "../router/notification.router";
-import {errorHandler} from "../middleware/error.middleware";
-import {notFoundHandler} from "../middleware/not-found.middleware";
+import {
+    commonStudentsRouter,
+    errorHandler,
+    notFoundHandler,
+    notificationRouter,
+    registrationRouter,
+    studentRouter,
+    suspensionRouter,
+    teacherRouter
+} from "../router";
+
+// Centralising the app definition here, so it can be shared with the unit tests as well.
 
 export const app = express();
 

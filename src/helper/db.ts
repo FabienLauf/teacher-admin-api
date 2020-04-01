@@ -1,6 +1,9 @@
 import mysql from "mysql";
 import * as dotenv from "dotenv";
 
+/**
+ Helper module to request the Database.
+ */
 dotenv.config();
 
 // Create a pool of connections to the database
@@ -13,6 +16,9 @@ const pool = mysql.createPool({
     database: process.env.DB_NAME
 });
 
+/**
+ * Format and escape a SQL query an return the result as a Promise
+ */
 function querySql(query: string, params: any[]): Promise<any> {
     return new Promise<any>((resolve, reject) => {
         pool.getConnection(function(errC, connection) {
