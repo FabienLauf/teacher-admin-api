@@ -1,9 +1,14 @@
-import {app} from "../server";
+import {app} from "../../src/helper/server";
 import supertest from "supertest";
+import {SuspensionService} from "../../src/service";
 
 const request = supertest(app);
 
 describe("suspensionRouter", () => {
+    beforeAll(() => {
+        SuspensionService.suspend = jest.fn().mockResolvedValue("");
+    });
+
     it("should NOT expose GET /suspend endpoint", async () => {
         const resp = await request.get("/api/suspend");
 

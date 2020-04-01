@@ -1,9 +1,14 @@
-import {app} from "../server";
+import {app} from "../../src/helper/server";
 import supertest from "supertest";
+import {RegistrationService} from "../../src/service";
 
 const request = supertest(app);
 
 describe("registrationRouter", () => {
+    beforeAll(() => {
+        RegistrationService.register = jest.fn().mockResolvedValue([]);
+    });
+
     it("should NOT expose GET /register endpoint", async () => {
         const resp = await request.get("/api/register");
 

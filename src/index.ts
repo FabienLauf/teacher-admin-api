@@ -1,45 +1,21 @@
-/**
- * Required External Modules
- */
 import * as dotenv from "dotenv";
-import express from "express";
-import {registrationRouter} from "./router/registration.router"
-import {teacherRouter} from "./router/teacher.router"
-import {commonStudentsRouter} from "./router/common-students.router";
-import {suspensionRouter} from "./router/suspension.router";
-import {notificationRouter} from "./router/notification.router";
-import {errorHandler} from "./middleware/error.middleware";
-import {notFoundHandler} from "./middleware/not-found.middleware";
+import {app} from "./helper/server";
 
 dotenv.config();
 
-/**
- * App Variables
- */
+// App Variables
 if (!process.env.PORT) {
     process.exit(1);
 }
 
 const PORT: number = parseInt(process.env.PORT as string, 10);
 
-const app = express();
-
-/**
- *  App Configuration
- */
-app.use(express.json());
-app.use("/api", [registrationRouter, teacherRouter, commonStudentsRouter, suspensionRouter, notificationRouter]);
-app.use([errorHandler, notFoundHandler]);
-/**
- * Server Activation
- */
+// Server Activation
 const server = app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
 
-/**
- * Webpack HMR Activation
- */
+//Webpack HMR Activation
 type ModuleId = string | number;
 
 interface WebpackHotModule {

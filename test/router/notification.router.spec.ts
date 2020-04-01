@@ -1,9 +1,18 @@
-import {app} from "../server";
+import {app} from "../../src/helper/server";
 import supertest from "supertest";
+import {NotificationService} from "../../src/service";
 
 const request = supertest(app);
 
 describe("registrationRouter", () => {
+    beforeAll(() => {
+        NotificationService.findRecipients = jest.fn().mockResolvedValue([
+            "studentbob@gmail.com",
+            "studentagnes@gmail.com",
+            "studentmiche@gmail.com"
+        ]);
+    });
+
     it("should NOT expose GET /retrievefornotifications endpoint", async () => {
         const resp = await request.get("/api/retrievefornotifications");
 
@@ -41,6 +50,10 @@ describe("registrationRouter", () => {
             });
 
         expect(resp.status).toBe(200);
-        expect(resp.body).toEqual({});
+        expect(resp.body).toEqual({recipients:[
+            "studentbob@gmail.com",
+            "studentagnes@gmail.com",
+            "studentmiche@gmail.com"
+        ]});
     });
 });
