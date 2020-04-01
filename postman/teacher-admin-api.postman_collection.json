@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "e0a63ce8-19df-4dfb-9281-b8eb653cb8a2",
+		"name": "teacher-admin-api Prod",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register t-ken with s-hon, s-common1, s-common2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1af8c17a-4ce7-4d4d-96df-de9f2c9b1dd6",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"teacher\": \"teacherken@gmail.com\",\n  \"students\":\n    [\n      \"studenthon@gmail.com\",\n      \"commonstudent1@gmail.com\",\n      \"commonstudent2@gmail.com\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/register",
+					"protocol": "http",
+					"host": [
+						"teacher-admin-api",
+						"ap-southeast-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "Register teacher ken with students Hon, Common1, and Common2"
+			},
+			"response": []
+		},
+		{
+			"name": "Register t-joe with s-jon, s-common1, s-common2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c188021d-5535-49f3-9ee9-16133d588349",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"teacher\": \"teacherjoe@gmail.com\",\n  \"students\":\n    [\n      \"studentjon@gmail.com\",\n      \"commonstudent1@gmail.com\",\n      \"commonstudent2@gmail.com\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/register",
+					"protocol": "http",
+					"host": [
+						"teacher-admin-api",
+						"ap-southeast-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "Register teacher Joe with students Jon, common1, and common2"
+			},
+			"response": []
+		},
+		{
+			"name": "Suspend s-jon",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8cb01dad-e61a-4bd1-a685-4083caf6407f",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"student\" : \"studentjon@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/suspend",
+					"protocol": "http",
+					"host": [
+						"teacher-admin-api",
+						"ap-southeast-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"suspend"
+					]
+				},
+				"description": "Suspend student Jon"
+			},
+			"response": []
+		},
+		{
+			"name": "Get common students from Joe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0a42bc9-5cf4-4540-b198-9ec0062498b5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Json response has 3 students\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.students.length).to.eql(3);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/commonstudents?teacher=teacherjoe@gmail.com",
+					"protocol": "http",
+					"host": [
+						"teacher-admin-api",
+						"ap-southeast-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"commonstudents"
+					],
+					"query": [
+						{
+							"key": "teacher",
+							"value": "teacherken@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "teacher",
+							"value": "teacherjoe@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve notifications for Joe's students",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "465558e4-d503-45f0-a657-b331a59ebf0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Json response has 5 recipients\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.recipients.length).to.eql(5);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"teacher\":  \"teacherken@gmail.com\",\n  \"notification\": \"Hello students! @studentagnes@gmail.com @studentmiche@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/retrievefornotifications",
+					"protocol": "http",
+					"host": [
+						"teacher-admin-api",
+						"ap-southeast-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"api",
+						"retrievefornotifications"
+					]
+				},
+				"description": "Should not return s-jon since it's suspsended.\nShould return s-common1 and s-common2 from database\nShoudl return studentagnes@gmail.com and studentmiche@gmail.com from notification message"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d3a60605-9183-4c15-a3ba-34eeed9387bd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "cc09bc57-7dfd-4825-8185-6337d0adf3b3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

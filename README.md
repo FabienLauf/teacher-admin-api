@@ -138,3 +138,11 @@ npm run watch
 ### Enpoints
 
 Same as above. Replace the domain by http://localhost:7000/
+
+## Postman collection
+
+Can be found in the [postman](postman/) directory.
+
+- Import the JSON file into your local Postman.
+- You can run all the requests in the given order at once.
+- **Disclaimer**: the tests included in this collection assume the database is empty before being run. If you register new students to existing teachers, the tests might fail.
