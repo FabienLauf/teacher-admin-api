@@ -149,4 +149,4 @@ Can be found in the [postman](postman/) directory.
 
 ## Database
 
-The Database is MySQL and is hosted on https://remotemysql.com/
+The Database is MySQL 8.0.13-4 and is hosted on https://remotemysql.com/
