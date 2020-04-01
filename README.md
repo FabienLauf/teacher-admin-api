@@ -8,7 +8,7 @@ Repository of GovTech's NodeJS assessment for candidate Fabien Lauf.
 ## Enpoints
 
 ### Register one or more students to a specified teacher
-POST http://localhost:7000/api/register
+POST http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/register
 
 Request
 ```json
@@ -26,7 +26,7 @@ HTTP 204 No Content
 
 ### Retrieve a list of students common to a given list of teachers
 #### One teacher:
-GET http://localhost:7000/api/commonstudents?teacher=teacherken%40gmail.com
+GET http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/commonstudents?teacher=teacherken%40gmail.com
 
 Response
 ```json
@@ -41,7 +41,7 @@ Response
 HTTP 200
 
 #### Two teachers:
-GET http://localhost:7000/api/commonstudents?teacher=teacherken%40gmail.com&teacher=teacherjoe%40gmail.com
+GET http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/commonstudents?teacher=teacherken%40gmail.com&teacher=teacherjoe%40gmail.com
 
 Response
 ```json
@@ -55,7 +55,7 @@ Response
 HTTP 200
 
 ### Suspend a specified student
-POST http://localhost:7000/api/suspend
+POST http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/suspend
 
 Request
 ```json
@@ -67,7 +67,7 @@ Response
 HTTP 204 No Content
 
 ### Retrieve a list of students who can receive a given notification
-POST http://localhost:7000/api/retrievefornotifications
+POST http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/retrievefornotifications
 
 Request
 ```json
@@ -90,10 +90,14 @@ Response
 HTTP 200
 
 ### List all the Teachers
-GET http://localhost:7000/api/teachers/
+GET http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/teachers/
+
+HTTP 200
 
 ### List all the Students
-GET http://localhost:7000/api/students/
+GET http://teacher-admin-api.ap-southeast-1.elasticbeanstalk.com/api/students/
+
+HTTP 200
 
 ## Run locally
 ### Requirements
